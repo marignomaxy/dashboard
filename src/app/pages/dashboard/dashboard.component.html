@@ -15,6 +15,7 @@
         <th class="py-2">Título</th>
         <th class="py-2">Descripción</th>
         <th class="py-2">Imagen</th>
+        <th class="py-2">Tecnologias</th>
         <th class="py-2">Destacado</th>
         <th class="py-2">Fecha</th>
         <th class="py-2">Repositorio</th>
@@ -28,8 +29,15 @@
         <td>
           <img src="{{ pagina.url_foto }}" alt="{{ pagina.titulo_pagina }}" />
         </td>
+        <td>
+          @for (tecnologia of pagina.tecnologias; track tecnologia.id) {
+          <div>{{ tecnologia.tituloTecnologia }}</div>
+          }
+        </td>
         <td>{{ pagina.destacado }}</td>
-        <td>{{ pagina.fecha | date : "shortDate" : "GMT-3" }}</td>
+        <td>
+          {{ pagina.fecha | date : "dd/MM/YY" : "UTC" }}
+        </td>
         <td>{{ pagina.url_repositorio }}</td>
         <td>{{ pagina.url_pagina }}</td>
         <td>
@@ -78,7 +86,7 @@
               alt="{{ certificado.titulo_certificado }}"
             />
           </td>
-          <td>{{ certificado.fecha | date : "shortDate" : "GMT-3" }}</td>
+          <td>{{ certificado.fecha | date : "dd/MM/YY" : "UTC" }}</td>
           <td>{{ certificado.esDeGrado }}</td>
           <td>{{ certificado.institucion }}</td>
           <td>{{ certificado.url_certificado }}</td>

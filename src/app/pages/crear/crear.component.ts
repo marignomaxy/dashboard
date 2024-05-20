@@ -79,7 +79,7 @@ export class CrearComponent implements OnInit {
       descripcion_pagina:
         this.formularioPagina.get('descripcion_pagina')?.value,
       tecnologias: this.selectedTecnologias,
-      destacada: this.formularioPagina.get('destacada')?.value,
+      destacado: this.formularioPagina.get('destacada')?.value,
       fecha: this.formularioPagina.get('fecha')?.value,
       url_repositorio: this.formularioPagina.get('url_repositorio')?.value,
       url_pagina: this.formularioPagina.get('url_pagina')?.value,

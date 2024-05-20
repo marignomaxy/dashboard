@@ -8,7 +8,7 @@ export interface Pagina {
   id: number;
   titulo_pagina: string;
   descripcion_pagina: string;
-  tecnologias: number[];
+  tecnologias: Tecnologia[];
   destacado: boolean;
   fecha: string;
   url_repositorio: string;
