@@ -9,8 +9,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { environment } from '../../../environments/environment';
 import { Tecnologia } from '../../interfaces/pagina';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-crear',
