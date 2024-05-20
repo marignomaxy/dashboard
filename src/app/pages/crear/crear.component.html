@@ -1,1 +1,91 @@
-<p>crear works!</p>
+<h1 class="text-3xl text-center font-bold">Crear Pagina</h1>
+<div class="m-auto bg-gray-400 p-10 rounded-3xl text-center w-full max-w-md">
+  <form [formGroup]="formularioPagina" (ngSubmit)="onSubmit()">
+    <div class="flex justify-center items-center flex-col gap-2">
+      <label for="titulo_pagina">Título de la página</label>
+      <input
+        type="text"
+        class="form-control w-full py-3 px-4 text-lg"
+        id="titulo_pagina"
+        formControlName="titulo_pagina"
+        placeholder="Ingrese el título de la página"
+      />
+
+      <label for="descripcion_pagina">Descripción de la página</label>
+      <input
+        type="text"
+        class="form-control w-full py-3 px-4 text-lg"
+        id="descripcion_pagina"
+        formControlName="descripcion_pagina"
+        placeholder="Ingrese la descripción de la página"
+      />
+      <label for="destacada">Destacada</label>
+      <input
+        type="checkbox"
+        class="form-control"
+        id="destacada"
+        formControlName="destacada"
+      />
+
+      <label for="contenido_pagina">Tecnologias</label>
+      <div formArrayName="tecnologias" class="flex flex-wrap">
+        @for (tecnologia of tecnologias; track tecnologia.id) {
+        <div class="w-1/2">
+          <input
+            type="checkbox"
+            [value]="tecnologia.id"
+            (change)="onTecnologiaChange($event)"
+          />
+          <label>{{ tecnologia.tituloTecnologia }}</label>
+        </div>
+        }
+      </div>
+
+      <label for="fecha">Fecha</label>
+      <input
+        type="date"
+        class="form-control w-full py-3 px-4 text-lg"
+        id="fecha"
+        formControlName="fecha"
+      />
+
+      <label for="url_repositorio">URL del repositorio</label>
+      <input
+        type="url"
+        class="form-control w-full py-3 px-4 text-lg"
+        id="url_repositorio"
+        formControlName="url_repositorio"
+        placeholder="Ingrese la URL del repositorio"
+      />
+
+      <label for="url_pagina">URL de la página</label>
+      <input
+        type="url"
+        class="form-control w-full py-3 px-4 text-lg"
+        id="url_pagina"
+        formControlName="url_pagina"
+        placeholder="Ingrese la URL de la página"
+      />
+
+      <label for="imagen">Imagen</label>
+      <input
+        type="file"
+        class="form-control w-full py-3 px-4 text-lg"
+        id="imagen"
+        (change)="onFileChange($event)"
+      />
+
+      <button
+        type="submit"
+        [disabled]="!formularioPagina.valid"
+        class="text-white p-3 rounded-xl mt-5"
+        [ngClass]="{
+          'bg-blue-600': !formularioPagina.invalid,
+          'bg-blue-400': formularioPagina.invalid
+        }"
+      >
+        Crear pagina
+      </button>
+    </div>
+  </form>
+</div>

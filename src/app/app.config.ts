@@ -4,7 +4,13 @@ import { provideHttpClient } from '@angular/common/http';
 
 import { routes } from './app.routes';
 import { AuthGuard } from './guard/autenticacion.guard';
+import { CommonModule } from '@angular/common';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideHttpClient(), AuthGuard],
+  providers: [
+    provideRouter(routes),
+    provideHttpClient(),
+    AuthGuard,
+    CommonModule,
+  ],
 };

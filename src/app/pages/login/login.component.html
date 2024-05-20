@@ -41,7 +41,11 @@
         <button
           type="submit"
           [disabled]="!formularioLogin.valid"
-          class="bg-blue-600 text-white p-3 rounded-xl mt-5"
+          class="text-white p-3 rounded-xl mt-5"
+          [ngClass]="{
+            'bg-blue-600 ': !formularioLogin.invalid,
+            'bg-blue-400 ': formularioLogin.invalid
+          }"
         >
           Ingresar
         </button>

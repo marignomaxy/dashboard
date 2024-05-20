@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { AutenticacionService } from '../../services/autenticacion.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private autenticacionService: AutenticacionService
+    private autenticacionService: AutenticacionService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -43,6 +45,7 @@ export class LoginComponent implements OnInit {
       this.autenticacionService.login(datos).subscribe({
         next: (response) => {
           console.log('Inicio de sesión exitoso', response);
+          this.router.navigate(['/home']);
         },
         error: (error) => {
           console.log('Error en el inicio de sesión', error);

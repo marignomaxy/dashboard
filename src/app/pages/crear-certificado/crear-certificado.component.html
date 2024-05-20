@@ -1,0 +1,77 @@
+<h1 class="text-3xl text-center font-bold">Crear Certificado</h1>
+<div class="m-auto bg-gray-400 p-10 rounded-3xl text-center w-full max-w-md">
+  <form [formGroup]="formularioCertificado" (ngSubmit)="onSubmit()">
+    <div class="flex justify-center items-center flex-col gap-2">
+      <label for="titulo_certificado">Título del certificado</label>
+      <input
+        type="text"
+        class="form-control w-full py-3 px-4 text-lg"
+        id="titulo_certificado"
+        formControlName="titulo_certificado"
+        placeholder="Ingrese el título del certificado"
+      />
+
+      <label for="esDeGrado">Es de grado</label>
+      <input
+        type="checkbox"
+        class="form-control"
+        id="esDeGrado"
+        formControlName="esDeGrado"
+      />
+
+      <label for="institucion">Institución</label>
+      <input
+        type="text"
+        class="form-control w-full py-3 px-4 text-lg"
+        id="institucion"
+        formControlName="institucion"
+        placeholder="Ingrese la institución"
+      />
+
+      <label for="descripcion_certificado">Descripción del certificado</label>
+      <input
+        type="text"
+        class="form-control w-full py-3 px-4 text-lg"
+        id="descripcion_certificado"
+        formControlName="descripcion_certificado"
+        placeholder="Ingrese la descripción del certificado"
+      />
+
+      <label for="fecha">Fecha</label>
+      <input
+        type="date"
+        class="form-control w-full py-3 px-4 text-lg"
+        id="fecha"
+        formControlName="fecha"
+      />
+
+      <label for="url_certificado">URL del certificado</label>
+      <input
+        type="text"
+        class="form-control w-full py-3 px-4 text-lg"
+        id="url_certificado"
+        formControlName="url_certificado"
+        placeholder="Ingrese la URL del certificado"
+      />
+      <label for="imagen">Imagen</label>
+      <input
+        type="file"
+        class="form-control w-full py-3 px-4 text-lg"
+        id="imagen"
+        (change)="onFileChange($event)"
+      />
+
+      <button
+        type="submit"
+        [disabled]="!formularioCertificado.valid"
+        class="text-white p-3 rounded-xl mt-5"
+        [ngClass]="{
+          'bg-blue-600': !formularioCertificado.invalid,
+          'bg-blue-400': formularioCertificado.invalid
+        }"
+      >
+        Crear pagina
+      </button>
+    </div>
+  </form>
+</div>

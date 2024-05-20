@@ -1,1 +1,98 @@
-<p>dashboard works!</p>
+<h1 class="text-4xl font-bold mb-4 text-center">Dashboard</h1>
+<div class="space-y-8 p-10">
+  <div class="flex justify-between">
+    <h2 class="text-xl font-bold">Listado de páginas</h2>
+    <button
+      (click)="crear('pagina')"
+      class="bg-blue-800 py-2 px-5 rounded-full text-white"
+    >
+      Agregar página
+    </button>
+  </div>
+  <div>
+    <table class="w-full mt-4 text-left border-collapse">
+      <tr class="border-b border-gray-200">
+        <th class="py-2">Título</th>
+        <th class="py-2">Descripción</th>
+        <th class="py-2">Imagen</th>
+        <th class="py-2">Destacado</th>
+        <th class="py-2">Fecha</th>
+        <th class="py-2">Repositorio</th>
+        <th class="py-2">Link Pagina</th>
+        <th class="py-2">Acciones</th>
+      </tr>
+      @for (pagina of paginas; track pagina.id) {
+      <tr class="border-b border-gray-200">
+        <td>{{ pagina.titulo_pagina }}</td>
+        <td>{{ pagina.descripcion_pagina }}</td>
+        <td>
+          <img src="{{ pagina.url_foto }}" alt="{{ pagina.titulo_pagina }}" />
+        </td>
+        <td>{{ pagina.destacado }}</td>
+        <td>{{ pagina.fecha | date : "shortDate" : "GMT-3" }}</td>
+        <td>{{ pagina.url_repositorio }}</td>
+        <td>{{ pagina.url_pagina }}</td>
+        <td>
+          <button
+            (click)="eliminarElemento('pagina', pagina.id)"
+            class="bg-red-700 py-2 px-5 rounded-full my-2 text-white"
+          >
+            Eliminar pagina
+          </button>
+        </td>
+      </tr>
+      }
+    </table>
+  </div>
+
+  <div>
+    <div class="flex justify-between">
+      <h2 class="text-xl font-bold">Listado de certificados</h2>
+      <button
+        (click)="crear('certificado')"
+        class="bg-blue-800 py-2 px-5 rounded-full text-white"
+      >
+        Agregar certificado
+      </button>
+    </div>
+    <div>
+      <table class="w-full mt-4 text-left border-collapse">
+        <tr class="border-b border-gray-200">
+          <th class="py-2">Título</th>
+          <th class="py-2">Descripción</th>
+          <th class="py-2">Imagen</th>
+          <th class="py-2">Fecha</th>
+          <th class="py-2">Es de grado</th>
+          <th class="py-2">Institucion</th>
+          <th class="py-2">Link Certificado</th>
+          <th class="py-2">Acciones</th>
+        </tr>
+
+        @for (certificado of certificados; track certificado.id) {
+        <tr class="border-b border-gray-200">
+          <td>{{ certificado.titulo_certificado }}</td>
+          <td>{{ certificado.descripcion_certificado }}</td>
+          <td>
+            <img
+              src="{{ certificado.url_foto_certificado }}"
+              alt="{{ certificado.titulo_certificado }}"
+            />
+          </td>
+          <td>{{ certificado.fecha | date : "shortDate" : "GMT-3" }}</td>
+          <td>{{ certificado.esDeGrado }}</td>
+          <td>{{ certificado.institucion }}</td>
+          <td>{{ certificado.url_certificado }}</td>
+          <td>
+            <button
+              (click)="eliminarElemento('certificado', certificado.id)"
+              class="bg-red-700 py-2 px-5 rounded-full my-2 text-white"
+            >
+              Eliminar Certificado
+            </button>
+          </td>
+        </tr>
+        }
+      </table>
+    </div>
+  </div>
+</div>
